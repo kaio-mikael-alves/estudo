@@ -1,0 +1,121 @@
+<!-- <!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<title>Requisição a recurso JSON</title>
+</head>
+<body>
+	<button onclick="loadRemoteJson()">Carregar Json</button>
+</body>
+	<script type="text/javascript">
+	
+		function loadRemoteJson(){
+			var url = "https://dummyjson.com/products/1"
+			
+			fetch(url, {
+				method: 'get'
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					console.log("Product Id: " + data.id);
+					console.log("Product Title: " + data.title);
+					console.log("Product Description: " + data.description);
+					console.log("Product Price: " + data.price);
+					console.log("Product Discount Percentage: " + data.discountPercentage);
+					console.log("Product Rating: " + data.rating);
+					console.log("Product Stock: " + data.stock);
+					console.log("Product Brand: " + data.brand);
+					console.log("Product Category: " + data.category);
+					console.log("Product Thumbnail: " + data.thumbnail);
+					console.log("Product Images: " + data.images);
+				});
+			})
+			.catch(function(err) {
+				console.error('O seguinte erro ocorreu durante a requisição: ' + err);
+			});
+		}
+	</script>
+</html> -->
+<!-- <!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>titulo introdutorio</title>
+    </head>
+    <body>
+        <h1>json</h1>
+        <p> A partir do click no botão abaixo uma nova imagem aleatória de cachorros será carregada utilizando requisições assíncronas com fetch</p>
+        <button onclick="loadRemoteJson()">carregar json</button>
+    </body>
+    <script type="text/javascript">
+        function loadRemoteJson(){
+            var url = "https://dummyjson.com/products/1"
+            
+            fetch(url, {
+                method: 'get'
+            })
+            .then(function(response) {
+                response.json().then(function(data){
+                    console.log("product id:" + data.id);
+                    console.log("product title:" + data.title);
+                    console.log("product description:" + data.description);
+                    console.log("product price:" + data.price);
+                    console.log("product discount percentage:" + data.discountPercentage);
+                    console.log("product rating:" + data.rating);
+                    console.log("product stock:" + data.stock);
+                    console.log("product brand:" + data.brand);
+                    console.log("product category:" + data.category);
+                    console.log("product thumbnail:" + data.thumbnail);
+                    console.log("product images:" + data.images);
+                });
+            })
+            .catch(function(err) {
+                console.error('o seguinte erro ocorreu durante a requisição:' + err);
+            });
+        }
+    </script>
+
+</html> -->
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Requisição a recurso JSON</title>
+</head>
+<body>
+    <button onclick="loadRemoteJson()">Carregar JSON</button>
+
+    <pre id="resultado"></pre>
+
+    <script>
+        async function loadRemoteJson() {
+            const url = "https://dummyjson.com/products/1";
+            const resultado = document.getElementById("resultado");
+
+            resultado.textContent = "Carregando...";
+
+            try {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error("Erro HTTP: " + response.status);
+                }
+
+                const data = await response.json();
+
+                resultado.textContent =
+                    "ID: " + data.id + "\n" +
+                    "Título: " + data.title + "\n" +
+                    "Descrição: " + data.description + "\n" +
+                    "Preço: " + data.price + "\n" +
+                    "Marca: " + data.brand + "\n" +
+                    "Categoria: " + data.category;
+            } catch (err) {
+                resultado.textContent = "Erro: " + err.message;
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+</html>

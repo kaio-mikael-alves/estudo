@@ -1,0 +1,70 @@
+<!-- <!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<title>Requisição XMLHttpRequest</title>
+</head>
+<body>
+	<h1>Imagens Aleatórios de Cachorros</h1>
+	<p>A partir do click no botão abaixo uma nova imagem aleatória de cachorros será carregada utilizando requisições assíncronas com XMLHttpRequest</p>
+
+	<img id="img_dog" src="" alt="Aguardando a imagem ser carregada" />
+	<br/>
+	<button onclick="carregarImagens()">Carregar Imagens</button>
+</body>
+	<script type="text/javascript">
+	
+		function carregarImagens(){
+		
+			var url = "https://dog.ceo/api/breeds/image/random"
+			fetch(url, {
+				method: 'get'
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					console.log('Resultado da Requisição: ' + data.message);
+
+					var imgDog = document.getElementById("img_dog");
+					imgDog.src = data.message;
+				});
+			})
+			.catch(function(err) {
+				console.error('O seguinte erro ocorreu durante a requisição: ' + err);
+			});
+
+		}
+	</script>
+</html> -->
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta chaset="utf-8">
+        <title>titulo introdutorio</title>
+    </head>
+    <body>
+        <h1>imagens de cachorros</h1>
+        <p> A partir do click no botão abaixo uma nova imagem aleatória de cachorros será carregada utilizando requisições assíncronas com fetch</p>
+        <img id="image_dog" src="" alt="aguardando imagem" />
+        <br/>
+        <button onclick="carregarimagens()">carregar imagens</button>
+    </body>
+	<script type="text/javascript">
+		function carregarimagens(){
+
+			var url = "https://dog.ceo/api/breeds/image/random"
+			fetch(url, {
+				method: 'get'
+			})
+			.then(function(response) {
+				response.json().then(function(data){
+					console.log('resultado da requisição:' + data.message);
+					var imgdog = document.getAnimations("image_dog");
+					imgdog.src = data.message;
+				})
+			})
+			.catch(function(err) {
+				console.error('o seguinte erro ocorreu durante a requisição: ' + err);
+			});
+		}
+	</script> 
+</html>
